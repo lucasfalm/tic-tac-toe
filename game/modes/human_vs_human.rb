@@ -4,7 +4,7 @@ require './game/modes/base.rb'
 
 module Game
   module Modes
-    class HumanVsHuman < Base
+    class HumanVsHuman < ::Game::Modes::Base
       class << self
         def start
 

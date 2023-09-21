@@ -13,7 +13,7 @@ module Game
     end
 
     def request_game_by_mode
-      game_mode_klass = GAME_MODES.dig(choose_game_mode_prompt)
+      game_mode_klass = choose_game_mode_prompt
 
       raise(InvalidGameMode) if game_mode_klass.nil?
 
@@ -33,14 +33,14 @@ module Game
     private_constant :GAME_MODES
 
     def choose_game_mode_prompt
-      puts "Choose game mode:"
+      puts "choose game mode:"
       GAME_MODES.each_with_index do |(game_mode_name, game_mode_klass), index|
         puts "#{index}. #{game_mode_name}"
       end
 
       game_option_index = gets.chomp.to_i
 
-      GAME_MODES.keys[game_option_index]
+      GAME_MODES.values.at(game_option_index)
     end
   end
 end

@@ -14,7 +14,7 @@ module Modes
           end
 
           # TODO: check if user won
-          puts "Game over"
+          puts "game over"
         end
 
         private
