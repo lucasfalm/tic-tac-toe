@@ -8,6 +8,11 @@ module Game
   module Modes
     class Base
       class << self
+        #
+        # NOTE: by doing this, the child class will be the game
+        #
+        #       still, it can be overwrited for a custom initialization
+        #
         def initialize_game
           self.new
         end

@@ -6,23 +6,41 @@ require './game/modes/human_vs_human.rb'
 
 module Game
   module Modes
+    class InvalidGameMode < StandardError
+      def initialize(message = "invalid game mode")
+        super
+      end
+    end
+
+    def request_game_by_mode
+      game_mode_klass = GAME_MODES.dig(choose_game_mode_prompt)
+
+      raise(InvalidGameMode) if game_mode_klass.nil?
+
+      game_mode_klass
+
+    rescue InvalidGameMode then retry
+    end
+
     private
 
     GAME_MODES = {
-      1 => ::Game::Modes::ComputerVsComputer,
-      2 => ::Game::Modes::HumanVsComputer,
-      3 => ::Game::Modes::HumanVsHuman,
+      "computer vs computer" => ::Game::Modes::ComputerVsComputer,
+      "human vs computer"    => ::Game::Modes::HumanVsComputer,
+      "human vs human"       => ::Game::Modes::HumanVsHuman,
     }.freeze
 
     private_constant :GAME_MODES
 
-    def requested_game_mode
+    def choose_game_mode_prompt
       puts "Choose game mode:"
-      puts "  1. computer vs computer \n"
-      puts "  2. human vs computer \n"
-      puts "  3. human vs human \n"
+      GAME_MODES.each_with_index do |(game_mode_name, game_mode_klass), index|
+        puts "#{index}. #{game_mode_name}"
+      end
 
-      gets.chomp.to_i
+      game_option_index = gets.chomp.to_i
+
+      GAME_MODES.keys[game_option_index]
     end
   end
 end

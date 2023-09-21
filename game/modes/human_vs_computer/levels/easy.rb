@@ -10,12 +10,7 @@ module Modes
           under_rules do
             get_human_position
 
-            if can_have_next_round?
-              #
-              # NOTE: playing as 'computer'
-              #
-              play_as_computer
-            end
+            play_as_computer if can_have_next_round?
           end
 
           # TODO: check if user won
@@ -25,15 +20,10 @@ module Modes
         private
 
         attr_reader :computer_symbol, :human_symbol
-        #
-        # NOTE: attempt to play as human_one
-        #
+
         def get_human_position
           position = nil
           until position
-            #
-            # NOTE: waiting for user's evaluation
-            #
             position = gets.chomp.to_i
             #
             # NOTE: validation of the symbol inputed by the user
@@ -148,7 +138,6 @@ module Modes
             return available_spaces[n].to_i
           end
         end
-        
       end
     end
   end

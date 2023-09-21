@@ -12,8 +12,7 @@ class GameInterface
   include ::Game::Modes
 
   def start_game
-    GAME_MODES
-      .dig(requested_game_mode)
+    request_game_by_mode
       .initialize_game
       .start
   end
