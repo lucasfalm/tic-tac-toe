@@ -8,7 +8,7 @@ module Modes
       class Easy < Base
         def start
           under_rules do
-            get_human_position
+            play_as_human(human_symbol)
 
             play_as_computer if can_have_next_round?
           end
@@ -20,28 +20,6 @@ module Modes
         private
 
         attr_reader :computer_symbol, :human_symbol
-
-        def get_human_position
-          position = nil
-          until position
-            position = gets.chomp.to_i
-            #
-            # NOTE: validation of the symbol inputed by the user
-            #
-            if board[position] != "X" && board[position] != "O"
-              @board[position] = human_symbol
-            else
-              #
-              # NOTE: symbol does not exist (not possible symbol)
-              #
-              # TODO: improve error handling for invalid entries (ask for a new symbol)
-              #
-              position = nil
-            end
-
-            display_board
-          end
-        end
 
         def play_as_computer
           position = nil
@@ -70,8 +48,6 @@ module Modes
                 #
                 position = nil
               end
-
-              display_board
             end
           end
         end

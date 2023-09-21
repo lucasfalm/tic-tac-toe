@@ -14,7 +14,7 @@ module Rules
   end
 
   def win?(inner_board = board)
-    @_win ||= winning_combinations.any? do |winning_combination|
+    winning_combinations.any? do |winning_combination|
       position_one, position_two, position_three = winning_combination
 
       combination = [
@@ -28,8 +28,14 @@ module Rules
   end
 
   def tie?(inner_board = board)
-    @_tie ||= winning_combinations.all? do |winning_combination|
-      playable_symbols.include?(winning_combination)
+    winning_combinations.all? do |winning_combination|
+      position_one, position_two, position_three = winning_combination
+
+      [
+        inner_board[position_one],
+        inner_board[position_two],
+        inner_board[position_three]
+      ].all? { |symbol| playable_symbols.include?(symbol) }
     end
   end
 
