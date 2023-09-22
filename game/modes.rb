@@ -38,7 +38,7 @@ module Game
       ::Game::Helpers::ClearTerminalScreen.call
 
       puts "choose game mode:"
-      GAME_MODES.each_with_index do |(game_mode_name, game_mode_klass), index|
+      GAME_MODES.each_with_index do |(game_mode_name, _game_mode_klass), index|
         puts "#{index}. #{game_mode_name}"
       end
 

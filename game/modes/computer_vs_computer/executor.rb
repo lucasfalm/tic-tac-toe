@@ -9,12 +9,6 @@ module Game
   module Modes
     module ComputerVsComputer
       class Executor < ::Game::Modes::Base
-        class << self
-          def start
-            self.new.start
-          end
-        end
-
         include ::Game::Modes::ComputerVsComputer::WatchFightMessage
         include ::Game::Modes::ComputerVsComputer::PlayAsComputer
 

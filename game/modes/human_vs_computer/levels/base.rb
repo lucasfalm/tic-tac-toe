@@ -22,8 +22,6 @@ module Game
 
             @computer_symbol = X_SYMBOL
             @human_symbol    = O_SYMBOL
-
-            play_as_human(human_symbol)
           end
 
           private

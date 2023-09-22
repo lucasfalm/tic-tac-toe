@@ -37,7 +37,7 @@ module Game
           ::Game::Helpers::ClearTerminalScreen.call
 
           puts "choose level:"
-          LEVELS.each_with_index do |(level_name, level_klass), index|
+          LEVELS.each_with_index do |(level_name, _level_klass), index|
             puts "#{index}. #{level_name}"
           end
 
