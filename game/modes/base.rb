@@ -49,6 +49,18 @@ module Game
         puts "===+===+===\n"
       end
 
+      def available_spaces
+        available_spaces = []
+
+        board.each do |space|
+          if !playable_symbols.include?(space)
+            available_spaces << space
+          end
+        end
+
+        available_spaces
+      end
+
       attr_accessor :board, :winning_symbol
     end
   end

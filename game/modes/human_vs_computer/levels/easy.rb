@@ -13,11 +13,7 @@ module Modes
             play_as_human(human_symbol) if can_play_next_round?
           end
 
-          if winning_symbol == human_symbol
-            you_win_message
-          else
-            game_over_message
-          end
+          game_result_message
         end
 
         private
@@ -48,23 +44,8 @@ module Modes
           end
         end
 
-        def get_best_move(depth = 0, best_score = {})
-          available_spaces = []
-
-          best_move = nil
-
-          board.each do |space|
-            if space != "X" && space != "O"
-              #
-              # NOTE: position not choosen yet
-              #
-              available_spaces << space
-            end
-          end
-
-          random_space = rand(0..available_spaces.count)
-
-          available_spaces[random_space].to_i
+        def get_best_move
+          random_computer_move
         end
       end
     end

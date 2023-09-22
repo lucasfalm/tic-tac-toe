@@ -16,12 +16,7 @@ module Game
           if !playable_symbols.include?(board[position])
             @board[position] = symbol
           else
-            #
-            # NOTE: symbol does not exist (not possible symbol)
-            #
-            # TODO: improve error handling for invalid entries (ask for a new symbol)
-            #
-            position = nil
+            redo
           end
         end
 

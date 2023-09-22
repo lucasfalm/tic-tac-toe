@@ -13,8 +13,7 @@ module Modes
             play_as_human(human_symbol) if can_play_next_round?
           end
 
-          # TODO: check if human won
-          puts "game over"
+          game_result_message
         end
 
         private
@@ -48,21 +47,8 @@ module Modes
         #
         # NOTE: playing auto as computer
         #
-        # TODO: improve level selection (use depth and best_score)
-        #
-        def get_best_move(depth = 0, best_score = {})
-          available_spaces = []
-
+        def get_best_move
           best_move = nil
-
-          board.each do |space|
-            if space != "X" && space != "O"
-              #
-              # NOTE: position not choosen yet
-              #
-              available_spaces << space
-            end
-          end
 
           available_spaces.each do |space|
             #
@@ -81,26 +67,11 @@ module Modes
               #
               # NOTE: would it be the user winning movement?
               #
-              if win?(forecast_board)
-                best_move = space.to_i
-              end
+              best_move = space.to_i if win?(forecast_board)
             end
           end
 
-          #
-          # NOTE: computer winning movement OR human possible winning movement
-          #
-          if best_move
-            return best_move
-          else
-            #
-            # NOTE: wouldn't make a win movement, and wouldn't directly impact the user
-            #
-            # TODO: improve level selection
-            #
-            n = rand(0..available_spaces.count)
-            return available_spaces[n].to_i
-          end
+          best_move ? best_move : random_computer_move
         end
       end
     end

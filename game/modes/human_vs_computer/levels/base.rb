@@ -10,6 +10,7 @@ module Modes
     module Levels
       class Base < ::Game::Modes::Base
         include Game::Helpers::PlayAsHuman
+
         include Game::Modes::HumanVsComputer::YouWinMessage
         include Game::Modes::HumanVsComputer::GameOverMessage
 
@@ -25,6 +26,20 @@ module Modes
         private
 
         attr_reader :computer_symbol, :human_symbol
+
+        def random_computer_move
+          random_space = rand(0..available_spaces.count)
+
+          available_spaces[random_space].to_i
+        end
+
+        def game_result_message
+          human_win? ? you_win_message : game_over_message
+        end
+
+        def human_win?
+          winning_symbol == human_symbol
+        end
       end
     end
   end
