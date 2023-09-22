@@ -4,6 +4,7 @@ module Rules
   private
 
   def under_rules(&block)
+    # TODO: add concept of 'round' (game has many rounds - each loop is a round)
     until win? || tie?
       yield block if block_given?
     end

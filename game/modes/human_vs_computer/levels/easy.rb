@@ -18,8 +18,6 @@ module Modes
 
         private
 
-        attr_reader :computer_symbol, :human_symbol
-
         def play_as_computer
           position = nil
 

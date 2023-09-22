@@ -13,7 +13,7 @@ class GameInterface
 
   def start_game
     request_game_by_mode
-      .initialize_game
+      .configure_game
       .start
   end
 end
