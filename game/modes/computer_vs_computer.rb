@@ -7,7 +7,7 @@ module Game
     module ComputerVsComputer
       class << self
         def configure_game
-          ::Game::Modes::ComputerVsComputer::Executor.start
+          ::Game::Modes::ComputerVsComputer::Executor
         end
       end
     end
