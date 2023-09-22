@@ -14,6 +14,12 @@ module Game
       end
     end
 
+    GAME_MODES = {
+      "computer vs computer" => ::Game::Modes::ComputerVsComputer,
+      "human vs computer"    => ::Game::Modes::HumanVsComputer,
+      "human vs human"       => ::Game::Modes::HumanVsHuman,
+    }.freeze
+
     def request_game_by_mode
       game_mode_klass = choose_game_mode_prompt
 
@@ -25,14 +31,6 @@ module Game
     end
 
     private
-
-    GAME_MODES = {
-      "computer vs computer" => ::Game::Modes::ComputerVsComputer,
-      "human vs computer"    => ::Game::Modes::HumanVsComputer,
-      "human vs human"       => ::Game::Modes::HumanVsHuman,
-    }.freeze
-
-    private_constant :GAME_MODES
 
     def choose_game_mode_prompt
       ::Game::Helpers::ClearTerminalScreen.call
