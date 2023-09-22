@@ -16,8 +16,18 @@ module Game
       end
 
       def start
-        under_rules do
-          run_round_with_animation
+        under_rules { run_round_with_animation }
+
+        winning_computer = begin
+          return if winning_symbol.nil?
+
+          computer_by_symbol(winning_symbol)
+        end
+
+        if win?
+          puts "\nfinish! computer #{winning_computer} win with '#{winning_symbol}'!"
+        else
+          puts "\ntie!"
         end
       end
 
@@ -29,39 +39,35 @@ module Game
         sleep(1)
 
         display_board
-        puts "\n"
 
         if can_play_next_round?
-          puts "\ncomputer one playing with '#{computer_one_symbol}'..."
-          sleep(2)
+          message_playing_with(computer_one_symbol)
+
           play_as_computer_one
+
+          display_board
         end
 
         sleep(1)
 
         if can_play_next_round?
-          puts "\ncomputer two playing with '#{computer_two_symbol}'..."
-          sleep(2)
+          message_playing_with(computer_two_symbol)
+
           play_as_computer_two
+
+          display_board
         end
+      end
 
-        winning_computer = begin
-          return if winning_symbol.nil?
+      def message_playing_with(computer_symbol)
+        computer = computer_by_symbol(computer_symbol)
 
-          if winning_symbol == computer_one_symbol
-            "one"
-          else
-            "two"
-          end
-        end
+        puts "\n\ncomputer #{computer} playing with '#{computer_symbol}'..."
+        sleep(2)
+      end
 
-        puts "\n"
-
-        if winning_computer.nil?
-          puts "tie!"
-        else
-          puts "finish! computer #{winning_computer} win!"
-        end
+      def computer_by_symbol(symbol)
+        symbol == computer_one_symbol ? "one" : "two"
       end
 
       def watch_the_fight_message
@@ -102,8 +108,6 @@ module Game
 
           if available_move?(board, position)
             @board[position] = symbol
-
-            display_board
           else
             position = nil
           end
