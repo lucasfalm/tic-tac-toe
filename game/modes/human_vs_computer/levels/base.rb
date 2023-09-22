@@ -27,10 +27,37 @@ module Modes
 
         attr_reader :computer_symbol, :human_symbol
 
-        def random_computer_move
+        def random_move
           random_space = rand(0..available_spaces.count)
 
           available_spaces[random_space].to_i
+        end
+
+        def get_best_move
+          best_move = nil
+
+          available_spaces.each do |space|
+            #
+            # NOTE: faking the movement
+            #
+            forecast_board             = board.dup
+            forecast_board[space.to_i] = computer_symbol
+
+            #
+            # NOTE: was the winning movement?
+            #
+            if win?(forecast_board)
+              best_move = space.to_i
+            else
+              forecast_board[space.to_i] = @human_symbol
+              #
+              # NOTE: would it be the user winning movement?
+              #
+              best_move = space.to_i if win?(forecast_board)
+            end
+          end
+
+          best_move ? best_move : random_move
         end
 
         def game_result_message

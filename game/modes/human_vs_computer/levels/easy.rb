@@ -24,7 +24,7 @@ module Modes
           position = nil
 
           until position
-            position = get_best_move
+            position = random_move
 
             #
             # NOTE: validating possible position
@@ -34,18 +34,9 @@ module Modes
 
               display_board
             else
-              #
-              # NOTE: has already a symbol there (wrong movement - retrying)
-              #
-              # NOTE: useless piece of code - position would already be nil (auto-retry)
-              #
               position = nil
             end
           end
-        end
-
-        def get_best_move
-          random_computer_move
         end
       end
     end

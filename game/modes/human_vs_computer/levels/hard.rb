@@ -21,57 +21,11 @@ module Modes
         attr_reader :computer_symbol, :human_symbol
 
         def play_as_computer
-          position = nil
+          position = get_best_move
 
-          until position
-            position = get_best_move
+          @board[position] = @computer_symbol
 
-            #
-            # NOTE: validating possible position
-            #
-            if available_move?(board, position)
-              @board[position] = @computer_symbol
-
-              display_board
-            else
-              #
-              # NOTE: has already a symbol there (wrong movement - retrying)
-              #
-              # NOTE: useless piece of code - position would already be nil (auto-retry)
-              #
-              position = nil
-            end
-          end
-        end
-
-        #
-        # NOTE: playing auto as computer
-        #
-        def get_best_move
-          best_move = nil
-
-          available_spaces.each do |space|
-            #
-            # NOTE: faking the movement
-            #
-            forecast_board             = board.dup
-            forecast_board[space.to_i] = computer_symbol
-
-            #
-            # NOTE: was the winning movement?
-            #
-            if win?(forecast_board)
-              best_move = space.to_i
-            else
-              forecast_board[space.to_i] = @human_symbol
-              #
-              # NOTE: would it be the user winning movement?
-              #
-              best_move = space.to_i if win?(forecast_board)
-            end
-          end
-
-          best_move ? best_move : random_computer_move
+          display_board
         end
       end
     end
