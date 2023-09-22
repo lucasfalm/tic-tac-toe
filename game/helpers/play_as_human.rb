@@ -10,14 +10,10 @@ module Game
           puts "play with symbol '#{symbol}' - enter [0-8]:"
           position = gets.chomp.to_i
 
-          #
-          # NOTE: validation of the symbol inputed by the user
-          #
-          if !playable_symbols.include?(board[position])
-            @board[position] = symbol
-          else
-            redo
-          end
+          redo if position > board.count - 1
+          redo if playable_symbols.include?(board[position])
+
+          @board[position] = symbol
         end
 
         display_board
