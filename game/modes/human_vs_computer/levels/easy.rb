@@ -24,11 +24,8 @@ module Modes
           position = nil
 
           until position
-            position = random_move
+            position = get_random_move
 
-            #
-            # NOTE: validating possible position
-            #
             if available_move?(board, position)
               @board[position] = @computer_symbol
 

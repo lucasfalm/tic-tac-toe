@@ -21,11 +21,19 @@ module Modes
         attr_reader :computer_symbol, :human_symbol
 
         def play_as_computer
-          position = get_best_move
+          position = nil
 
-          @board[position] = @computer_symbol
+          until position
+            position = get_best_move
 
-          display_board
+            if available_move?(board, position)
+              @board[position] = @computer_symbol
+
+              display_board
+            else
+              position = nil
+            end
+          end
         end
       end
     end

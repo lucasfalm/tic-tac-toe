@@ -2,6 +2,10 @@
 
 require './game/modes/base.rb'
 require './game/helpers/play_as_human.rb'
+
+require './game/modes/human_vs_computer/get_best_move.rb'
+require './game/modes/human_vs_computer/get_random_move.rb'
+
 require './game/modes/human_vs_computer/you_win_message.rb'
 require './game/modes/human_vs_computer/game_over_message.rb'
 
@@ -10,6 +14,9 @@ module Modes
     module Levels
       class Base < ::Game::Modes::Base
         include Game::Helpers::PlayAsHuman
+
+        include Game::Modes::HumanVsComputer::GetBestMove
+        include Game::Modes::HumanVsComputer::GetRandomMove
 
         include Game::Modes::HumanVsComputer::YouWinMessage
         include Game::Modes::HumanVsComputer::GameOverMessage
@@ -26,39 +33,6 @@ module Modes
         private
 
         attr_reader :computer_symbol, :human_symbol
-
-        def random_move
-          random_space = rand(0..available_spaces.count)
-
-          available_spaces[random_space].to_i
-        end
-
-        def get_best_move
-          best_move = nil
-
-          available_spaces.each do |space|
-            #
-            # NOTE: faking the movement
-            #
-            forecast_board             = board.dup
-            forecast_board[space.to_i] = computer_symbol
-
-            #
-            # NOTE: was the winning movement?
-            #
-            if win?(forecast_board)
-              best_move = space.to_i
-            else
-              forecast_board[space.to_i] = @human_symbol
-              #
-              # NOTE: would it be the user winning movement?
-              #
-              best_move = space.to_i if win?(forecast_board)
-            end
-          end
-
-          best_move ? best_move : random_move
-        end
 
         def game_result_message
           human_win? ? you_win_message : game_over_message
