@@ -26,9 +26,9 @@ module Game
         private
 
         LEVELS = {
-          "easy"   => ::Modes::HumanVsComputer::Levels::Easy,
-          "medium" => ::Modes::HumanVsComputer::Levels::Medium,
-          "hard"   => ::Modes::HumanVsComputer::Levels::Hard,
+          "easy"   => ::Game::Modes::HumanVsComputer::Levels::Easy,
+          "medium" => ::Game::Modes::HumanVsComputer::Levels::Medium,
+          "hard"   => ::Game::Modes::HumanVsComputer::Levels::Hard,
         }.freeze
 
         private_constant :LEVELS
