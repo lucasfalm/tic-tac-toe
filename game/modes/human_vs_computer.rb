@@ -16,7 +16,7 @@ module Game
       end
 
       class << self
-        def initialize_game
+        def configure_game
           choose_level_prompt
 
         rescue InvalidLevelOption

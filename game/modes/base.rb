@@ -15,7 +15,7 @@ module Game
         #
         #       still, it can be overwrited for a custom initialization
         #
-        def initialize_game
+        def configure_game
           self.new
         end
       end
