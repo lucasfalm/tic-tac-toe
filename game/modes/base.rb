@@ -4,6 +4,10 @@ require './game/rules.rb'
 require './game/winning_combinations.rb'
 require './game/playable_symbols.rb'
 
+require './game/helpers/available_spaces.rb'
+require './game/helpers/get_best_move.rb'
+require './game/helpers/get_random_move.rb'
+
 require './game/helpers/clear_terminal_screen.rb'
 
 module Game
@@ -24,8 +28,12 @@ module Game
       include WinningCombinations
       include PlayableSymbols
 
+      include Game::Helpers::AvailableSpaces
+      include Game::Helpers::GetBestMove
+      include Game::Helpers::GetRandomMove
+
       def initialize
-        @board          = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        @board = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
         @winning_symbol = nil
 
         display_board
@@ -47,18 +55,6 @@ module Game
         puts " #{board[6]} | #{board[7]} | #{board[8]}"
         puts "\n"
         puts "===+===+===\n"
-      end
-
-      def available_spaces
-        available_spaces = []
-
-        board.each do |space|
-          if !playable_symbols.include?(space)
-            available_spaces << space
-          end
-        end
-
-        available_spaces
       end
 
       attr_accessor :board, :winning_symbol

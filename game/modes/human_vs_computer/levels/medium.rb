@@ -24,7 +24,10 @@ module Modes
           position = nil
 
           until position
-            hard_or_easy = [get_best_move, get_random_move]
+            hard_or_easy = [
+              get_best_move(symbol: @computer_symbol, against_symbol: @human_symbol),
+              get_random_move
+            ]
 
             position = hard_or_easy.sample
 

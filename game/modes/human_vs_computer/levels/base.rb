@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
 require './game/modes/base.rb'
-require './game/helpers/play_as_human.rb'
 
-require './game/modes/human_vs_computer/get_best_move.rb'
-require './game/modes/human_vs_computer/get_random_move.rb'
+require './game/helpers/play_as_human.rb'
 
 require './game/modes/human_vs_computer/you_win_message.rb'
 require './game/modes/human_vs_computer/game_over_message.rb'
@@ -14,9 +12,6 @@ module Modes
     module Levels
       class Base < ::Game::Modes::Base
         include Game::Helpers::PlayAsHuman
-
-        include Game::Modes::HumanVsComputer::GetBestMove
-        include Game::Modes::HumanVsComputer::GetRandomMove
 
         include Game::Modes::HumanVsComputer::YouWinMessage
         include Game::Modes::HumanVsComputer::GameOverMessage
