@@ -4,6 +4,8 @@ require './game/modes/human_vs_computer.rb'
 require './game/modes/computer_vs_computer.rb'
 require './game/modes/human_vs_human.rb'
 
+require './game/helpers/clear_terminal_screen'
+
 module Game
   module Modes
     class InvalidGameMode < StandardError
@@ -33,6 +35,8 @@ module Game
     private_constant :GAME_MODES
 
     def choose_game_mode_prompt
+      ::Game::Helpers::ClearTerminalScreen.call
+
       puts "choose game mode:"
       GAME_MODES.each_with_index do |(game_mode_name, game_mode_klass), index|
         puts "#{index}. #{game_mode_name}"

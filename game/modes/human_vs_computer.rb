@@ -4,6 +4,8 @@ require './game/modes/human_vs_computer/levels/easy.rb'
 require './game/modes/human_vs_computer/levels/medium.rb'
 require './game/modes/human_vs_computer/levels/hard.rb'
 
+require './game/helpers/clear_terminal_screen.rb'
+
 module Game
   module Modes
     module HumanVsComputer
@@ -17,7 +19,8 @@ module Game
         def initialize_game
           choose_level_prompt
 
-        rescue InvalidLevelOption then retry
+        rescue InvalidLevelOption
+          then retry
         end
 
         private
@@ -31,6 +34,8 @@ module Game
         private_constant :LEVELS
 
         def choose_level_prompt
+          ::Game::Helpers::ClearTerminalScreen.call
+
           puts "choose level:"
           LEVELS.each_with_index do |(level_name, level_klass), index|
             puts "#{index}. #{level_name}"
