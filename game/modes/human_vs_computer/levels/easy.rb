@@ -8,9 +8,9 @@ module Modes
       class Easy < Base
         def start
           under_rules do
-            play_as_computer
+            play_as_computer if can_play_next_round?
 
-            play_as_human(human_symbol)
+            play_as_human(human_symbol) if can_play_next_round?
           end
 
           if winning_symbol == human_symbol

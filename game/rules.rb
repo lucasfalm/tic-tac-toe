@@ -24,7 +24,7 @@ module Rules
       if symbols.one?
         @winning_symbol = symbols.first
 
-        break true
+        return true
       end
 
       false
@@ -48,6 +48,10 @@ module Rules
         playable_symbols.include?(played_symbol)
       end.count > 1
     end
+  end
+
+  def can_play_next_round?
+    !win? && !tie?
   end
 
   def available_move?(inner_board = board, position)
