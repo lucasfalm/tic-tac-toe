@@ -17,10 +17,10 @@ module Game
 
       class << self
         def configure_game
-          choose_level_prompt
+          requested_level = choose_level_prompt
+          requested_level.configure_game
 
-        rescue InvalidLevelOption
-          then retry
+        rescue InvalidLevelOption then retry
         end
 
         private
@@ -45,7 +45,7 @@ module Game
 
           raise InvalidLevelOption unless LEVELS.values.at(level_option_index)
 
-          LEVELS.values[level_option_index].new
+          LEVELS.values[level_option_index]
         end
       end
     end

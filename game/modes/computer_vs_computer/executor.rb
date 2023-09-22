@@ -69,6 +69,7 @@ module Game
 
         def message_playing_with(computer_symbol)
           computer = computer_by_symbol(computer_symbol)
+
           puts "\n\ncomputer #{computer} playing with '#{computer_symbol}'..."
           sleep(2)
         end
