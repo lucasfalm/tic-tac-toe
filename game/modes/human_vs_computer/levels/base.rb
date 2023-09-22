@@ -12,6 +12,8 @@ module Game
     module HumanVsComputer
       module Levels
         class Base < ::Game::Modes::Base
+          class MissingPlayAsComputerMethod < StandardError; end
+
           include Game::Helpers::PlayAsHuman
 
           include Game::Modes::HumanVsComputer::YouWinMessage
@@ -24,9 +26,26 @@ module Game
             @human_symbol    = O_SYMBOL
           end
 
+          def start
+            under_rules do
+              play_as_human(human_symbol) if can_play_next_round?
+
+              play_as_computer if can_play_next_round?
+            end
+
+            game_result_message
+          end
+
           private
 
           attr_reader :computer_symbol, :human_symbol
+
+          #
+          # NOTE: must be overwritten according to the level of difficulty
+          #
+          def play_as_computer
+            raise MissingPlayAsComputerMethod
+          end
 
           def game_result_message
             human_win? ? you_win_message : game_over_message

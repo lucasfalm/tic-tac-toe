@@ -7,16 +7,6 @@ module Game
     module HumanVsComputer
       module Levels
         class Easy < ::Game::Modes::HumanVsComputer::Levels::Base
-          def start
-            under_rules do
-              play_as_human(human_symbol) if can_play_next_round?
-
-              play_as_computer if can_play_next_round?
-            end
-
-            game_result_message
-          end
-
           private
 
           def play_as_computer
