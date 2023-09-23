@@ -1,13 +1,13 @@
 # frozen_string_literal: true
 
-require './game/modes/base.rb'
+require './game/modes/human_vs_human/executor.rb'
 
 module Game
   module Modes
-    class HumanVsHuman < ::Game::Modes::Base
+    module HumanVsHuman
       class << self
-        def start
-
+        def configure_game
+          ::Game::Modes::HumanVsHuman::Executor.configure_game
         end
       end
     end
