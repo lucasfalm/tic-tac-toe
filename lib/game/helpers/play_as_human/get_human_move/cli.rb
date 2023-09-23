@@ -6,7 +6,7 @@ module Game
       module GetHumanMove
         module Cli
           class << self
-            def get_human_move(symbol)
+            def call(symbol)
               sleep(0.3)
               puts "\nplay with symbol '#{symbol}' - enter [0-8]:"
               gets.chomp.to_i

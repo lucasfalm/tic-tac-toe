@@ -7,7 +7,7 @@ module Game
     module PlayAsHuman
       module GetHumanMove
         def get_human_move(symbol)
-          ::Game::Helpers::PlayAsHuman::GetHumanMove::Cli.get_human_move(symbol)
+          ::Game::Helpers::PlayAsHuman::GetHumanMove::Cli.call(symbol)
         end
       end
     end
