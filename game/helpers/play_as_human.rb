@@ -7,7 +7,8 @@ module Game
         position = nil
 
         until position
-          puts "play with symbol '#{symbol}' - enter [0-8]:"
+          sleep(0.3)
+          puts "\nplay with symbol '#{symbol}' - enter [0-8]:"
           position = gets.chomp.to_i
 
           redo if position > board.count - 1

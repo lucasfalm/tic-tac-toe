@@ -23,7 +23,7 @@ module Game
     def request_game_by_mode
       game_mode_klass = choose_game_mode_prompt
 
-      raise(InvalidGameMode) if game_mode_klass.nil?
+      raise InvalidGameMode if game_mode_klass.nil?
 
       game_mode_klass
 
@@ -42,7 +42,11 @@ module Game
 
       game_option_index = gets.chomp.to_i
 
-      GAME_MODES.values.at(game_option_index)
+      game_mode_klass_at(game_option_index)
+    end
+
+    def game_mode_klass_at(index)
+      GAME_MODES.values.at(index)
     end
   end
 end

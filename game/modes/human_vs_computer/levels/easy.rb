@@ -16,7 +16,7 @@ module Game
               position = get_random_move
 
               if available_move?(board, position)
-                @board[position] = @computer_symbol
+                @board[position] = computer_symbol
 
                 display_board
               else

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require './game/board.rb'
 require './game/rules.rb'
 require './game/winning_combinations.rb'
 require './game/playable_symbols.rb'
@@ -17,23 +18,23 @@ module Game
         #
         # NOTE: by doing this, the child class will be the game
         #
-        #       still, it can be overwrited for a custom initialization
+        #       still, it can be overwrited for a custom configuration
         #
         def configure_game
           self.new
         end
       end
 
-      include Rules
-      include WinningCombinations
-      include PlayableSymbols
+      include ::Game::Rules
+      include ::Game::WinningCombinations
+      include ::Game::PlayableSymbols
 
-      include Game::Helpers::AvailableSpaces
-      include Game::Helpers::GetBestMove
-      include Game::Helpers::GetRandomMove
+      include ::Game::Helpers::AvailableSpaces
+      include ::Game::Helpers::GetBestMove
+      include ::Game::Helpers::GetRandomMove
 
       def initialize
-        @board = ["0", "1", "2", "3", "4", "5", "6", "7", "8"]
+        @board          = ::Game::Board.fresh_new
         @winning_symbol = nil
 
         display_board

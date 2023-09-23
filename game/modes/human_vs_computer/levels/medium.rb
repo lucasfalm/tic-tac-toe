@@ -21,7 +21,7 @@ module Game
               position = hard_or_easy.sample
 
               if available_move?(board, position)
-                @board[position] = @computer_symbol
+                @board[position] = computer_symbol
 
                 display_board
               else

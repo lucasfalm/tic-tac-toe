@@ -16,7 +16,7 @@ module Game
               position = get_best_move(symbol: computer_symbol, against_symbol: human_symbol)
 
               if available_move?(board, position)
-                @board[position] = @computer_symbol
+                @board[position] = computer_symbol
 
                 display_board
               else
