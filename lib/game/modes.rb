@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require './game/modes/human_vs_computer.rb'
-require './game/modes/computer_vs_computer.rb'
-require './game/modes/human_vs_human.rb'
+require './lib/game/modes/human_vs_computer.rb'
+require './lib/game/modes/computer_vs_computer.rb'
+require './lib/game/modes/human_vs_human.rb'
 
-require './game/helpers/clear_terminal_screen'
+require './lib/game/helpers/clear_terminal_screen'
 
 module Game
   module Modes

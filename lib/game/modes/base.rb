@@ -1,15 +1,15 @@
 # frozen_string_literal: true
 
-require './game/board.rb'
-require './game/rules.rb'
-require './game/winning_combinations.rb'
-require './game/playable_symbols.rb'
+require './lib/game/board.rb'
+require './lib/game/rules.rb'
+require './lib/game/winning_combinations.rb'
+require './lib/game/playable_symbols.rb'
 
-require './game/helpers/available_spaces.rb'
-require './game/helpers/get_best_move.rb'
-require './game/helpers/get_random_move.rb'
+require './lib/game/helpers/available_spaces.rb'
+require './lib/game/helpers/get_best_move.rb'
+require './lib/game/helpers/get_random_move.rb'
 
-require './game/helpers/clear_terminal_screen.rb'
+require './lib/game/helpers/clear_terminal_screen.rb'
 
 module Game
   module Modes

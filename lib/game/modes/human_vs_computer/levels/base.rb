@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require './game/modes/base.rb'
+require './lib/game/modes/base.rb'
 
-require './game/helpers/play_as_human.rb'
+require './lib/game/helpers/play_as_human.rb'
 
-require './game/modes/human_vs_computer/you_win_message.rb'
-require './game/modes/human_vs_computer/game_over_message.rb'
+require './lib/game/modes/human_vs_computer/you_win_message.rb'
+require './lib/game/modes/human_vs_computer/game_over_message.rb'
 
 module Game
   module Modes

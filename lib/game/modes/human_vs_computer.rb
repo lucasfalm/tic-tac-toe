@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
-require './game/modes/human_vs_computer/levels/easy.rb'
-require './game/modes/human_vs_computer/levels/medium.rb'
-require './game/modes/human_vs_computer/levels/hard.rb'
+require './lib/game/modes/human_vs_computer/levels/easy.rb'
+require './lib/game/modes/human_vs_computer/levels/medium.rb'
+require './lib/game/modes/human_vs_computer/levels/hard.rb'
 
-require './game/helpers/clear_terminal_screen.rb'
+require './lib/game/helpers/clear_terminal_screen.rb'
 
 module Game
   module Modes

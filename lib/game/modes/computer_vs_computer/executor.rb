@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-require './game/modes/base.rb'
+require './lib/game/modes/base.rb'
 
-require './game/modes/computer_vs_computer/watch_fight_message.rb'
-require './game/modes/computer_vs_computer/play_as_computer.rb'
+require './lib/game/modes/computer_vs_computer/watch_fight_message.rb'
+require './lib/game/modes/computer_vs_computer/play_as_computer.rb'
 
 module Game
   module Modes

@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
-require './game/modes/base.rb'
+require './lib/game/modes/base.rb'
 
-require './game/helpers/play_as_human.rb'
+require './lib/game/helpers/play_as_human.rb'
 
 module Game
   module Modes
@@ -25,9 +25,9 @@ module Game
           end
 
           if win?
-            puts "human symbol '#{winning_symbol}' win!"
+            puts "\nhuman symbol '#{winning_symbol}' win!\n"
           else
-            puts "tie!"
+            puts "\ntie!\n"
           end
         end
 

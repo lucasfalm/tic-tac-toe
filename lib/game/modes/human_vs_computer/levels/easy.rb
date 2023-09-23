@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './game/modes/human_vs_computer/levels/base.rb'
+require './lib/game/modes/human_vs_computer/levels/base.rb'
 
 module Game
   module Modes

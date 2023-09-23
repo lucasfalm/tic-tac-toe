@@ -1,2 +1,2 @@
 start:
-	ruby game_interface.rb
+	ruby interfaces/game_cli.rb

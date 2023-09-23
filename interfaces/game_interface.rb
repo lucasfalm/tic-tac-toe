@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './game/modes.rb'
+require './lib/game/modes.rb'
 
 class GameInterface
   class << self
@@ -17,5 +17,3 @@ class GameInterface
       .start
   end
 end
-
-GameInterface.start_game

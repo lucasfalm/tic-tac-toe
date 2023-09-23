@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-require './game/modes/computer_vs_computer/executor.rb'
+require './lib/game/modes/computer_vs_computer/executor.rb'
 
 module Game
   module Modes
