@@ -10,6 +10,8 @@ module Game
       class Executor < ::Game::Modes::Base
         include Game::Helpers::PlayAsHuman
 
+        attr_reader :human_one_symbol, :human_two_symbol
+
         def initialize
           super
 
@@ -30,10 +32,6 @@ module Game
             puts "\ntie!\n"
           end
         end
-
-        private
-
-        attr_reader :human_one_symbol, :human_two_symbol
       end
     end
   end

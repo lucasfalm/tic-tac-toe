@@ -1,15 +1,17 @@
 # frozen_string_literal: true
 
+require './lib/game/helpers/play_as_human/cli.rb'
+
 module Game
   module Helpers
     module PlayAsHuman
+      include ::Game::Helpers::PlayAsHuman::Cli
+
       def play_as_human(symbol)
         position = nil
 
         until position
-          sleep(0.3)
-          puts "\nplay with symbol '#{symbol}' - enter [0-8]:"
-          position = gets.chomp.to_i
+          position = get_human_move(symbol)
 
           redo if position > board.count - 1
           redo if playable_symbols.include?(board[position])
