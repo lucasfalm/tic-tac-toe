@@ -6,7 +6,7 @@ module Game
       module GameOverMessage
         def game_over_message
           puts "\n"
-          puts "game over!"
+          puts "game over, you lose!"
           puts "\n"
         end
       end

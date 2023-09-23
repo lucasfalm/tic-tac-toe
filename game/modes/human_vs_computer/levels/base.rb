@@ -48,7 +48,11 @@ module Game
           end
 
           def game_result_message
-            human_win? ? you_win_message : game_over_message
+            if win? && human_win?
+              you_win_message
+            else
+              game_over_message
+            end
           end
 
           def human_win?
