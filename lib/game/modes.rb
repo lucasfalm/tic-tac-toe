@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require './lib/game/modes/human_vs_computer.rb'
-require './lib/game/modes/computer_vs_computer.rb'
-require './lib/game/modes/human_vs_human.rb'
+require './lib/game/modes/available.rb'
 
 require './lib/game/helpers/clear_terminal_screen'
 
@@ -14,11 +12,7 @@ module Game
       end
     end
 
-    GAME_MODES = {
-      "computer vs computer" => ::Game::Modes::ComputerVsComputer,
-      "human vs computer"    => ::Game::Modes::HumanVsComputer,
-      "human vs human"       => ::Game::Modes::HumanVsHuman,
-    }.freeze
+    include ::Game::Modes::Available
 
     def request_game_by_mode
       game_mode_klass = choose_game_mode_prompt
@@ -36,7 +30,7 @@ module Game
       ::Game::Helpers::ClearTerminalScreen.call
 
       puts "choose game mode:"
-      GAME_MODES.each_with_index do |(game_mode_name, _game_mode_klass), index|
+      GAME_MODES_AVAILABLE.each_with_index do |(game_mode_name, _game_mode_klass), index|
         puts "#{index}. #{game_mode_name}"
       end
 
@@ -46,7 +40,7 @@ module Game
     end
 
     def game_mode_klass_at(index)
-      GAME_MODES.values.at(index)
+      GAME_MODES_AVAILABLE.values.at(index)
     end
   end
 end
