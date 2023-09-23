@@ -11,19 +11,25 @@ RSpec.describe ::Game::Modes::ComputerVsComputer::Executor do
     let(:computer_one_symbol) { "X" }
     let(:computer_two_symbol) { "O" }
 
-    # let(:computer_one_symbol) { game.computer_one_symbol }
-    # let(:computer_two_symbol) { game.computer_two_symbol }
-
     before do
-      allow_any_instance_of(described_class).to receive(:watch_fight_message).and_return(true)
-      allow_any_instance_of(described_class).to receive(:sleep).and_return(true)
-      allow(Game::Helpers::ClearTerminalScreen).to receive(:call).and_return(true)
+      allow_any_instance_of(described_class).to receive(:watch_fight_message)
+      allow_any_instance_of(described_class).to receive(:sleep)
+      allow(Game::Helpers::ClearTerminalScreen).to receive(:call)
     end
 
     context "computer one win" do
       before do
-        allow_any_instance_of(described_class).to receive(:hard_or_easy)
-          .and_return([0], [4], [1], [5], [2], [8])
+        allow_any_instance_of(described_class).to(
+          receive(:hard_or_easy)
+          .with(symbol: computer_one_symbol, against_symbol: computer_two_symbol)
+          .and_return([0], [3], [2])
+        )
+
+        allow_any_instance_of(described_class).to(
+          receive(:hard_or_easy)
+          .with(symbol: computer_two_symbol, against_symbol: computer_one_symbol)
+          .and_return([4], [5], [8])
+        )
       end
 
       let(:expected_output) do
@@ -134,8 +140,17 @@ RSpec.describe ::Game::Modes::ComputerVsComputer::Executor do
 
     context "computer two win" do
       before do
-        allow_any_instance_of(described_class).to receive(:hard_or_easy)
-          .and_return([0], [2], [1], [5], [4], [8])
+        allow_any_instance_of(described_class).to(
+          receive(:hard_or_easy)
+          .with(symbol: computer_one_symbol, against_symbol: computer_two_symbol)
+          .and_return([0], [1], [4])
+        )
+
+        allow_any_instance_of(described_class).to(
+          receive(:hard_or_easy)
+          .with(symbol: computer_two_symbol, against_symbol: computer_one_symbol)
+          .and_return([2], [5], [8])
+        )
       end
 
       let(:expected_output) do
@@ -258,8 +273,17 @@ RSpec.describe ::Game::Modes::ComputerVsComputer::Executor do
 
     context "tie" do
       before do
-        allow_any_instance_of(described_class).to receive(:hard_or_easy)
-          .and_return([4], [8], [7], [1], [2], [6], [3], [5])
+        allow_any_instance_of(described_class).to(
+          receive(:hard_or_easy)
+          .with(symbol: computer_one_symbol, against_symbol: computer_two_symbol)
+          .and_return([4], [7], [2], [3])
+        )
+
+        allow_any_instance_of(described_class).to(
+          receive(:hard_or_easy)
+          .with(symbol: computer_two_symbol, against_symbol: computer_one_symbol)
+          .and_return([8], [1], [6], [5])
+        )
       end
 
       let(:expected_output) do

@@ -16,11 +16,17 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
 
     context "human one win" do
       before do
-        allow_any_instance_of(described_class).to receive(:get_human_move)
-          .with(human_one_symbol).and_return(0, 1, 2)
+        allow_any_instance_of(described_class).to(
+          receive(:get_human_move)
+          .with(human_one_symbol)
+          .and_return(0, 1, 2)
+        )
 
-        allow_any_instance_of(described_class).to receive(:get_human_move)
-          .with(human_two_symbol).and_return(4, 5, 8)
+        allow_any_instance_of(described_class).to(
+          receive(:get_human_move)
+          .with(human_two_symbol)
+          .and_return(4, 5, 8)
+        )
       end
 
       let(:expected_output) do
@@ -89,11 +95,17 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
 
     context "human two win" do
       before do
-        allow_any_instance_of(described_class).to receive(:get_human_move)
-          .with(human_one_symbol).and_return(0, 1, 4)
+        allow_any_instance_of(described_class).to(
+          receive(:get_human_move)
+          .with(human_one_symbol)
+          .and_return(0, 1, 4)
+        )
 
-        allow_any_instance_of(described_class).to receive(:get_human_move)
-          .with(human_two_symbol).and_return(2, 5, 8)
+        allow_any_instance_of(described_class).to(
+          receive(:get_human_move)
+          .with(human_two_symbol)
+          .and_return(2, 5, 8)
+        )
       end
 
       let(:expected_output) do
@@ -171,11 +183,17 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
 
     context "tie" do
       before do
-        allow_any_instance_of(described_class).to receive(:get_human_move)
-          .with(human_one_symbol).and_return(4, 7, 2, 3)
+        allow_any_instance_of(described_class).to(
+          receive(:get_human_move)
+          .with(human_one_symbol)
+          .and_return(4, 7, 2, 3)
+        )
 
-        allow_any_instance_of(described_class).to receive(:get_human_move)
-          .with(human_two_symbol).and_return(8, 1, 6, 5)
+        allow_any_instance_of(described_class).to(
+          receive(:get_human_move)
+          .with(human_two_symbol)
+          .and_return(8, 1, 6, 5)
+        )
       end
 
       let(:expected_output) do

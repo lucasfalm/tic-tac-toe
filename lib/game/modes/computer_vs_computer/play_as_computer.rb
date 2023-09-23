@@ -11,7 +11,7 @@ module Game
           position = nil
 
           until position
-            position = hard_or_easy.sample
+            position = hard_or_easy(symbol: symbol, against_symbol: against_symbol).sample
 
             if available_move?(board, position)
               @board[position] = symbol
@@ -21,7 +21,7 @@ module Game
           end
         end
 
-        def hard_or_easy
+        def hard_or_easy(symbol:, against_symbol:)
           [
             get_best_move(symbol: symbol, against_symbol: against_symbol),
             get_random_move

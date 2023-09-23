@@ -28,9 +28,9 @@ module Game
           if win?
             winning_computer = computer_by_symbol(winning_symbol)
 
-            puts "\nfinish! computer #{winning_computer} win with '#{winning_symbol}'!"
+            puts "\nfinish! computer #{winning_computer} win with '#{winning_symbol}'!\n"
           else
-            puts "\ntie!"
+            puts "\ntie!\n"
           end
         end
 
