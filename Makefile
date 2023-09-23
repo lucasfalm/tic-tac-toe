@@ -2,4 +2,4 @@ start:
 	ruby interfaces/game_cli.rb
 
 run-specs:
-	rspec spec/*
+	rspec spec/* --fail-fast=5

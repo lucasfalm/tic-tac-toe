@@ -11,7 +11,9 @@ module Game
           position = nil
 
           until position
-            position = hard_or_easy(symbol: symbol, against_symbol: against_symbol).sample
+            position = hard_or_easy(
+              symbol: symbol, against_symbol: against_symbol
+            ).sample
 
             if available_move?(board, position)
               @board[position] = symbol

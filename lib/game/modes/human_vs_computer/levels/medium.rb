@@ -6,19 +6,16 @@ module Game
   module Modes
     module HumanVsComputer
       module Levels
-        class Medium < ::Game::Modes::HumanVsComputer::Levels::Base          
+        class Medium < ::Game::Modes::HumanVsComputer::Levels::Base
           private
 
           def play_as_computer
             position = nil
 
             until position
-              hard_or_easy = [
-                get_best_move(symbol: computer_symbol, against_symbol: human_symbol),
-                get_random_move
-              ]
-
-              position = hard_or_easy.sample
+              position = hard_or_easy(
+                symbol: computer_symbol, against_symbol: human_symbol
+              ).sample
 
               if available_move?(board, position)
                 @board[position] = computer_symbol
@@ -28,6 +25,13 @@ module Game
                 position = nil
               end
             end
+          end
+
+          def hard_or_easy(symbol:, against_symbol:)
+            [
+              get_best_move(symbol: symbol, against_symbol: against_symbol),
+              get_random_move
+            ]
           end
         end
       end

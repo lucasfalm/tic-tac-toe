@@ -17,12 +17,12 @@ RSpec.describe ::Game::Modes::ComputerVsComputer::Executor do
       allow(Game::Helpers::ClearTerminalScreen).to receive(:call)
     end
 
-    context "computer one win" do
+    context "computer one wins" do
       before do
         allow_any_instance_of(described_class).to(
           receive(:hard_or_easy)
           .with(symbol: computer_one_symbol, against_symbol: computer_two_symbol)
-          .and_return([0], [3], [2])
+          .and_return([0], [1], [2])
         )
 
         allow_any_instance_of(described_class).to(
@@ -138,7 +138,7 @@ RSpec.describe ::Game::Modes::ComputerVsComputer::Executor do
       it { expect{ subject }.to output(expected_output).to_stdout }
     end
 
-    context "computer two win" do
+    context "computer two wins" do
       before do
         allow_any_instance_of(described_class).to(
           receive(:hard_or_easy)

@@ -14,7 +14,7 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
     # let(:human_one_symbol) { game.human_one_symbol }
     # let(:human_two_symbol) { game.human_two_symbol }
 
-    context "human one win" do
+    context "human one wins" do
       before do
         allow_any_instance_of(described_class).to(
           receive(:get_human_move)
@@ -93,7 +93,7 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
       it { expect{ subject }.to output(expected_output).to_stdout }
     end
 
-    context "human two win" do
+    context "human two wins" do
       before do
         allow_any_instance_of(described_class).to(
           receive(:get_human_move)
@@ -111,34 +111,34 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
       let(:expected_output) do
         <<~TEXT
         ===+===+===
-     
+
          0 | 1 | 2
         ===+===+===
          3 | 4 | 5
         ===+===+===
          6 | 7 | 8
- 
+
         ===+===+===
         ===+===+===
- 
+
          X | 1 | 2
         ===+===+===
          3 | 4 | 5
         ===+===+===
          6 | 7 | 8
- 
+
         ===+===+===
         ===+===+===
- 
+
          X | 1 | O
         ===+===+===
          3 | 4 | 5
         ===+===+===
          6 | 7 | 8
- 
+
         ===+===+===
         ===+===+===
- 
+
          X | X | O
         ===+===+===
          3 | 4 | 5
@@ -156,7 +156,7 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
 
         ===+===+===
         ===+===+===
- 
+
          X | X | O
         ===+===+===
          3 | X | O
