@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
-require './lib/game/helpers/play_as_human/cli.rb'
+require './lib/game/helpers/play_as_human/get_human_move.rb'
 
 module Game
   module Helpers
     module PlayAsHuman
-      include ::Game::Helpers::PlayAsHuman::Cli
+      include ::Game::Helpers::PlayAsHuman::GetHumanMove
 
       def play_as_human(symbol)
         position = nil
