@@ -18,7 +18,7 @@ module Game
       class << self
         def configure_game
           requested_level = choose_level_prompt
-          requested_level.configure_game
+          requested_level.prepare
 
         rescue InvalidLevelOption then retry
         end

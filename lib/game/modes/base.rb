@@ -18,9 +18,9 @@ module Game
         #
         # NOTE: by doing this, the child class will be the game
         #
-        #       still, it can be overwrited for a custom configuration
+        #       still, it can be overwrited for a custom initialization
         #
-        def configure_game
+        def prepare
           self.new
         end
       end

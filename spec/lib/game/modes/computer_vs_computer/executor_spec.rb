@@ -4,7 +4,7 @@ require './lib/game/modes/computer_vs_computer.rb'
 
 RSpec.describe ::Game::Modes::ComputerVsComputer::Executor do
   describe "#start" do
-    let(:game) { described_class.configure_game }
+    let(:game) { described_class.prepare }
 
     subject { game.start }
 

@@ -6,7 +6,7 @@ require './spec/lib/game/modes/human_vs_computer/levels/shared_context.rb'
 
 RSpec.describe ::Game::Modes::HumanVsComputer::Levels::Hard do
   describe "#start" do
-    let(:game) { described_class.configure_game }
+    let(:game) { described_class.prepare }
 
     subject { game.start }
 

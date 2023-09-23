@@ -7,7 +7,7 @@ module Game
     module HumanVsHuman
       class << self
         def configure_game
-          ::Game::Modes::HumanVsHuman::Executor.configure_game
+          ::Game::Modes::HumanVsHuman::Executor.prepare
         end
       end
     end

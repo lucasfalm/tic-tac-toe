@@ -4,7 +4,7 @@ require './lib/game/modes/human_vs_human.rb'
 
 RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
   describe "#start" do
-    let(:game) { described_class.configure_game }
+    let(:game) { described_class.prepare }
 
     subject { game.start }
 
