@@ -16,8 +16,7 @@
 **b.** run the RSpec files
 > $ make run-specs
 
-currently supporting three game modes, containing five different ways of playing.
-
+### currently supports three game modes, containing five different ways of playing.
 ### modes available:
 **1.** computer vs. computer
 
