@@ -14,7 +14,7 @@
 > $ make run-specs
 
 ### currently supports three game modes, containing five different ways of playing.
-### modes available:
+### available modes:
 **1.** computer vs. computer
 
 **2.** human vs. human
