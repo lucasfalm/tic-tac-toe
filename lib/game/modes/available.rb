@@ -7,7 +7,7 @@ require './lib/game/modes/human_vs_human.rb'
 module Game
   module Modes
     module Available
-      GAME_MODES_AVAILABLE = {
+      AVAILABLE_GAME_MODES = {
         "computer vs computer" => ::Game::Modes::ComputerVsComputer,
         "human vs computer"    => ::Game::Modes::HumanVsComputer,
         "human vs human"       => ::Game::Modes::HumanVsHuman,
