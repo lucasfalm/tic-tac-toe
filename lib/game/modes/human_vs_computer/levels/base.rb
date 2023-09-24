@@ -29,7 +29,7 @@ module Game
           end
 
           def start
-            under_rules do
+            rounds_under_rules do
               play_as_human(human_symbol) if can_play_next_round?
 
               play_as_computer if can_play_next_round?

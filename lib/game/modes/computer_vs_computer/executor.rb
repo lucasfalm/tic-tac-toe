@@ -27,7 +27,7 @@ module Game
         end
 
         def start
-          under_rules { run_round_with_animation }
+          rounds_under_rules { run_round_with_animation }
 
           if win?
             winning_computer = computer_by_symbol(winning_symbol)
