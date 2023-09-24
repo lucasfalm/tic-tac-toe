@@ -5,9 +5,6 @@
 **1.** git clone if you don't have the project on your local machine just yet
 > git clone https://github.com/lucasfalm/tic-tac-toe.git
 
-**2.** go to the root of the project and download the development dependencies
-> $ bundle
-
 ### basic commands:
 
 **a.** start the game engine:
