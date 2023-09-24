@@ -5,6 +5,8 @@ require './lib/game/modes/base.rb'
 require './lib/game/modes/computer_vs_computer/watch_fight_message.rb'
 require './lib/game/modes/computer_vs_computer/play_as_computer.rb'
 
+require './lib/game/modes/computer_vs_computer/messages/computer_win_message.rb'
+require './lib/game/modes/computer_vs_computer/messages/computer_playing_message.rb'
 require './lib/game/messages/tie_message.rb'
 
 module Game
@@ -14,6 +16,8 @@ module Game
         include ::Game::Modes::ComputerVsComputer::WatchFightMessage
         include ::Game::Modes::ComputerVsComputer::PlayAsComputer
 
+        include ::Game::Modes::ComputerVsComputer::Messages::ComputerWinMessage
+        include ::Game::Modes::ComputerVsComputer::Messages::ComputerPlayingMessage
         include ::Game::Messages::TieMessage
 
         def initialize
@@ -27,12 +31,12 @@ module Game
         end
 
         def start
-          rounds_under_rules { run_round_with_animation }
+          play_rounds_under_rules { round }
 
           if win?
             winning_computer = computer_by_symbol(winning_symbol)
 
-            puts "\nfinish! computer #{winning_computer} win with '#{winning_symbol}'!\n"
+            computer_win_message(winning_computer, winning_symbol)
           else
             tie_message
           end
@@ -42,10 +46,9 @@ module Game
 
         attr_reader :computer_one_symbol, :computer_two_symbol
 
-        def run_round_with_animation
+        def round
           sleep(1)
           display_board
-
           attempt_to_play_with(computer_one_symbol)
           sleep(1)
           attempt_to_play_with(computer_two_symbol)
@@ -68,7 +71,7 @@ module Game
         def message_playing_with(computer_symbol)
           computer = computer_by_symbol(computer_symbol)
 
-          puts "\n\ncomputer #{computer} playing with '#{computer_symbol}'..."
+          computer_playing_message(computer, computer_symbol)
           sleep(2)
         end
 

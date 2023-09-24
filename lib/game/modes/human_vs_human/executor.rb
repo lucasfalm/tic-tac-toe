@@ -13,7 +13,7 @@ module Game
       class Executor < ::Game::Modes::Base
         include Game::Helpers::PlayAsHuman
 
-        include Game::Modes::HumanVsHuman::HumanWinMessage
+        include Game::Modes::HumanVsHuman::Messages::HumanWinMessage
         include Game::Messages::TieMessage
 
         attr_reader :human_one_symbol, :human_two_symbol
@@ -26,17 +26,21 @@ module Game
         end
 
         def start
-          rounds_under_rules do
-            play_as_human(human_one_symbol) if can_play_next_round?
-
-            play_as_human(human_two_symbol) if can_play_next_round?
-          end
+          play_rounds_under_rules { round }
 
           if win?
             human_win_message(winning_symbol)
           else
             tie_message
           end
+        end
+
+        private
+
+        def round
+          play_as_human(human_one_symbol) if can_play_next_round?
+
+          play_as_human(human_two_symbol) if can_play_next_round?
         end
       end
     end

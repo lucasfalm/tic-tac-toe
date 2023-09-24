@@ -3,9 +3,12 @@
 module Game
   module Modes
     module HumanVsHuman
-      module HumanWinMessage
-        def human_win_message(symbol)
-          puts "\nhuman symbol '#{symbol}' win!\n"
+      module Messages
+        module HumanWinMessage
+          def human_win_message(symbol)
+            puts "\nhuman symbol '#{symbol}' win!\n"
+            puts "\n"
+          end
         end
       end
     end

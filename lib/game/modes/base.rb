@@ -15,6 +15,8 @@ require './lib/game/helpers/clear_terminal_screen.rb'
 module Game
   module Modes
     class Base
+      class MissingStartMethod < StandardError; end
+
       class << self
         #
         # NOTE: by doing this, the child class will be the game
@@ -42,7 +44,12 @@ module Game
         display_board
       end
 
-      def start; end
+      #
+      # NOTE: must be overridden and include the game mode round logic
+      #
+      def start
+        raise MissingStartMethod
+      end
 
       private
 

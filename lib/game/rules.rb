@@ -4,7 +4,7 @@ module Game
   module Rules
     private
 
-    def rounds_under_rules(&round)
+    def play_rounds_under_rules(&round)
       until end_game?
         yield round if block_given?
       end

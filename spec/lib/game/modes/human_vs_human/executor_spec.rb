@@ -82,6 +82,7 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
         ===+===+===
 
         human symbol 'X' win!
+
         TEXT
       end
 
@@ -170,6 +171,7 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
         ===+===+===
 
         human symbol 'O' win!
+
         TEXT
       end
 

@@ -29,11 +29,7 @@ module Game
           end
 
           def start
-            rounds_under_rules do
-              play_as_human(human_symbol) if can_play_next_round?
-
-              play_as_computer if can_play_next_round?
-            end
+            play_rounds_under_rules { round }
 
             game_result_message
           end
@@ -41,6 +37,12 @@ module Game
           private
 
           attr_reader :computer_symbol, :human_symbol
+
+          def round
+            play_as_human(human_symbol) if can_play_next_round?
+
+            play_as_computer if can_play_next_round?
+          end
 
           #
           # NOTE: must be overwritten according to the level of difficulty
