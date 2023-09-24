@@ -10,17 +10,19 @@
 
 ### basic commands:
 
-a. start the game engine:
+**a.** start the game engine:
 > $ make start
 
-b. run the RSpec files
+**b.** run the RSpec files
 > $ make run-specs
 
 currently supporting three game modes, containing five different ways of playing.
 
 ### modes available:
 **1.** computer vs. computer
+
 **2.** human vs. human
+
 **3.** computer vs. human (available in the **easy**, **medium** and **hard** levels)
 
 ### technical game design overview:
