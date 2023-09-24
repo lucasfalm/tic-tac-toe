@@ -4,8 +4,9 @@ require './lib/game/modes/base.rb'
 
 require './lib/game/helpers/play_as_human.rb'
 
-require './lib/game/modes/human_vs_computer/you_win_message.rb'
-require './lib/game/modes/human_vs_computer/game_over_message.rb'
+require './lib/game/modes/human_vs_computer/messages/you_win_message.rb'
+require './lib/game/modes/human_vs_computer/messages/game_over_message.rb'
+require './lib/game/messages/tie_message.rb'
 
 module Game
   module Modes
@@ -16,8 +17,9 @@ module Game
 
           include Game::Helpers::PlayAsHuman
 
-          include Game::Modes::HumanVsComputer::YouWinMessage
-          include Game::Modes::HumanVsComputer::GameOverMessage
+          include Game::Modes::HumanVsComputer::Messages::YouWinMessage
+          include Game::Modes::HumanVsComputer::Messages::GameOverMessage
+          include Game::Messages::TieMessage
 
           def initialize
             super
@@ -48,10 +50,10 @@ module Game
           end
 
           def game_result_message
-            if win? && human_win?
-              you_win_message
+            if win?
+              human_win? ? you_win_message : game_over_message
             else
-              game_over_message
+              tie_message
             end
           end
 

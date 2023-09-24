@@ -431,6 +431,7 @@ RSpec.describe ::Game::Modes::ComputerVsComputer::Executor do
         ===+===+===
 
         tie!
+
         TEXT
       end
 

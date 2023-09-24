@@ -281,6 +281,7 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
         ===+===+===
 
         tie!
+
         TEXT
       end
 

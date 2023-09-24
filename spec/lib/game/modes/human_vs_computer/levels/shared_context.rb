@@ -236,7 +236,7 @@ RSpec.shared_examples "when ties" do
 
     ===+===+===
 
-    game over, you lose!
+    tie!
 
     TEXT
   end

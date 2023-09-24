@@ -5,12 +5,16 @@ require './lib/game/modes/base.rb'
 require './lib/game/modes/computer_vs_computer/watch_fight_message.rb'
 require './lib/game/modes/computer_vs_computer/play_as_computer.rb'
 
+require './lib/game/messages/tie_message.rb'
+
 module Game
   module Modes
     module ComputerVsComputer
       class Executor < ::Game::Modes::Base
         include ::Game::Modes::ComputerVsComputer::WatchFightMessage
         include ::Game::Modes::ComputerVsComputer::PlayAsComputer
+
+        include ::Game::Messages::TieMessage
 
         def initialize
           super
@@ -30,7 +34,7 @@ module Game
 
             puts "\nfinish! computer #{winning_computer} win with '#{winning_symbol}'!\n"
           else
-            puts "\ntie!\n"
+            tie_message
           end
         end
 

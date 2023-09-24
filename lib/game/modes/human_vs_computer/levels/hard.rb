@@ -5,8 +5,8 @@ require './lib/game/modes/human_vs_computer/levels/base.rb'
 module Game
   module Modes
     module HumanVsComputer
-      module Levels
-        class Hard < ::Game::Modes::HumanVsComputer::Levels::Base
+    module Levels
+      class Hard < ::Game::Modes::HumanVsComputer::Levels::Base
           private
 
           def play_as_computer
