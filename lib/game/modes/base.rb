@@ -5,6 +5,7 @@ require './lib/game/rules.rb'
 require './lib/game/winning_combinations.rb'
 require './lib/game/playable_symbols.rb'
 
+require './lib/game/helpers/display_board.rb'
 require './lib/game/helpers/available_spaces.rb'
 require './lib/game/helpers/get_best_move.rb'
 require './lib/game/helpers/get_random_move.rb'
@@ -29,6 +30,7 @@ module Game
       include ::Game::WinningCombinations
       include ::Game::PlayableSymbols
 
+      include ::Game::Helpers::DisplayBoard
       include ::Game::Helpers::AvailableSpaces
       include ::Game::Helpers::GetBestMove
       include ::Game::Helpers::GetRandomMove
@@ -43,20 +45,6 @@ module Game
       def start; end
 
       private
-
-      def display_board
-        ::Game::Helpers::ClearTerminalScreen.call
-
-        puts "===+===+===\n"
-        puts "\n"
-        puts " #{board[0]} | #{board[1]} | #{board[2]}"
-        puts "===+===+===\n"
-        puts " #{board[3]} | #{board[4]} | #{board[5]}"
-        puts "===+===+===\n"
-        puts " #{board[6]} | #{board[7]} | #{board[8]}"
-        puts "\n"
-        puts "===+===+===\n"
-      end
 
       attr_accessor :board, :winning_symbol
     end

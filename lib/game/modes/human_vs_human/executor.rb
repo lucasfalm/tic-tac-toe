@@ -4,6 +4,7 @@ require './lib/game/modes/base.rb'
 
 require './lib/game/helpers/play_as_human.rb'
 
+require './lib/game/modes/human_vs_human/messages/human_win_message.rb'
 require './lib/game/messages/tie_message.rb'
 
 module Game
@@ -12,6 +13,7 @@ module Game
       class Executor < ::Game::Modes::Base
         include Game::Helpers::PlayAsHuman
 
+        include Game::Modes::HumanVsHuman::HumanWinMessage
         include Game::Messages::TieMessage
 
         attr_reader :human_one_symbol, :human_two_symbol
@@ -31,7 +33,7 @@ module Game
           end
 
           if win?
-            puts "\nhuman symbol '#{winning_symbol}' win!\n"
+            human_win_message(winning_symbol)
           else
             tie_message
           end
