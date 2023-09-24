@@ -9,9 +9,6 @@ RSpec.describe ::Game::Modes::HumanVsHuman::Executor do
     let(:human_one_symbol) { "X" }
     let(:human_two_symbol) { "O" }
 
-    # let(:human_one_symbol) { game.human_one_symbol }
-    # let(:human_two_symbol) { game.human_two_symbol }
-
     context "human one wins" do
       before do
         allow_any_instance_of(described_class).to(
