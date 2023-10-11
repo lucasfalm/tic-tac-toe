@@ -1,5 +1,3 @@
-# hey there! thanks for the opportunity, and I hope you enjoy it
-
 ## how to start the game?
 
 **1.** git clone if you don't have the project on your local machine just yet
@@ -23,5 +21,3 @@
 
 ### technical game design overview:
 - [Miro board](https://miro.com/app/board/uXjVMjIh4Qw=/?share_link_id=708384462447)
-
-#### I'm open to discussing why I decided to design the game like this if you wish!
